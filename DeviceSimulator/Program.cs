@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Azure.Devices.Client;
+using Newtonsoft.Json;
 
 namespace DeviceSimulator
 {
@@ -23,7 +24,7 @@ namespace DeviceSimulator
             var connectionString = config["WarmerConnectionString"];
             var client = DeviceClient.CreateFromConnectionString(connectionString);
 
-            var content = new Message(Encoding.UTF8.GetBytes("testing..."));
+            var content = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(new {someMessage = "test"})));
             await client.SendEventAsync(content);
         }
     }
