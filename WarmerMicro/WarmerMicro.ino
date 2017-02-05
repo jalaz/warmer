@@ -38,6 +38,9 @@
 const char *ssid = "test123";
 const char *password = "test_123";
 
+String deviceId = "a06a2ed4-ea12-420c-9c50-bb01266c981d";
+String deviceName = "Car heater";
+
 bool isTurnOn;
 
 ESP8266WebServer server(80);
@@ -66,6 +69,11 @@ void handleDevice() {
 
 }
 
+void handleDeviceList()
+{
+	server.send(200, "application/json", "[{\"id\":\""+ deviceId +"\", \"name\":\"" + deviceName + "\", \"isOn\":\""+ isTurnOn+"\"}]");
+}
+
 void DoCommand(String cmd,String value)
 {
 	if (cmd == "turnOn")
@@ -73,9 +81,11 @@ void DoCommand(String cmd,String value)
 		if (value == "1")
 			isTurnOn = true;
 		else
-			isTurnOn = false;		
+			isTurnOn = false;	
+
+		UpdatePins();
 	}
-	UpdatePins();
+	
 }
 
 void UpdatePins()
@@ -106,6 +116,7 @@ void setup() {
 	
 	server.on("/", handleRoot); 
 	server.on("/device", handleDevice);
+	server.on("/equipmentList", handleDeviceList);
 
 	server.begin();
 	Serial.println("HTTP server started");

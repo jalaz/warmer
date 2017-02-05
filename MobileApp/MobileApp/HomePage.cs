@@ -8,11 +8,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using System.Net.Http;
 using System.Net;
+using MobileApp.Services;
 
 namespace MobileApp
 {
     public class HomePage : ContentPage
     {
+        private readonly DeviceDataProvider deviceDataprovider;
         public HomePage()
         {
             Label header = new Label
@@ -22,11 +24,15 @@ namespace MobileApp
                 HorizontalOptions = LayoutOptions.Center
             };
 
+            deviceDataprovider = new DeviceDataProvider(Constants.DeviceUrl);
+
             var equipments = new List<Equipment>
             {
                 new Equipment {Id = Guid.NewGuid(), Name = "Car heater"},
                 new Equipment {Id = Guid.NewGuid(), Name = "Ventilation", IsOn = true}
             };
+
+            //var equipments = deviceDataprovider.GetEquipments().Result;
 
             var tableView = DrawEquipment(equipments);
 
@@ -85,29 +91,12 @@ namespace MobileApp
             var id = Guid.Parse(cell.StyleId);
             var isOn = cell.On;
             bool currentState = isOn;
-            var client = new HttpClient();
-            var deviceUrl = "http://192.168.4.1/device?turnOn=";
-            deviceUrl += isOn ? "1" : "0";
-            try
-            {
-                var response = await client.GetAsync(new Uri(deviceUrl));
-                if (!response.IsSuccessStatusCode)
-                    System.Diagnostics.Debug.WriteLine("Error. Failed to switch. The responce is not ok.");
-                var message = await response.Content.ReadAsStringAsync();
 
+           
+            var result = await deviceDataprovider.SwitchEquipment(id, isOn);
+            if (result != null)
+                currentState = result.IsOn;
 
-                if (message.Contains("OFF"))
-                    currentState = false;
-                else if (message.Contains("ON"))
-                {
-                    currentState = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Error. Failed to switch." + ex.ToString());
-                return;
-            }
             if (isOn != currentState)
                     UpdateSwitchCell(cell, currentState);
             
