@@ -6,7 +6,7 @@ namespace Warmer.Api.Controllers
 {
     [Authorize]
     [Route("[controller]")]
-    public class DevicesController : Controller
+    public class DeviceController : Controller
     {
         // GET api/values
         [HttpGet]
