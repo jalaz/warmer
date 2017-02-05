@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Warmer.AuthorizationServer", "Warmer.AuthorizationServer\Warmer.AuthorizationServer.xproj", "{1010179C-36DC-4460-9D2F-6D7C49D8911C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Warmer.Api", "Warmer.Api\Warmer.Api.xproj", "{8B550EF2-F439-44EB-BDB2-D3683647DE68}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Warmer.WebClient", "Warmer.WebClient\Warmer.WebClient.xproj", "{0BFCC1D7-2588-4B1D-B95C-5AB0F2607647}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1010179C-36DC-4460-9D2F-6D7C49D8911C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1010179C-36DC-4460-9D2F-6D7C49D8911C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1010179C-36DC-4460-9D2F-6D7C49D8911C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1010179C-36DC-4460-9D2F-6D7C49D8911C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B550EF2-F439-44EB-BDB2-D3683647DE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B550EF2-F439-44EB-BDB2-D3683647DE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B550EF2-F439-44EB-BDB2-D3683647DE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B550EF2-F439-44EB-BDB2-D3683647DE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BFCC1D7-2588-4B1D-B95C-5AB0F2607647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFCC1D7-2588-4B1D-B95C-5AB0F2607647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFCC1D7-2588-4B1D-B95C-5AB0F2607647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFCC1D7-2588-4B1D-B95C-5AB0F2607647}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
